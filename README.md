@@ -1,7 +1,8 @@
 # GmsSpoof
 
 An Xposed module that makes Google's apps trust a microG install on a phone
-that has no Google. Built against the Kyocera DIGNO KY-42C.
+that has no Google. Built for the Light Phone III; developed against the
+Kyocera DIGNO KY-42C as well.
 
 ## Why it exists
 
@@ -67,9 +68,10 @@ three apps above, reboot. `libs/XposedBridgeAPI-82.jar` is `compileOnly`.
 
 ## Status
 
-Built and run against the KY-42C (Android 10, API 29, `armeabi-v7a`). A
-working prototype: Maps launches and talks to microG's location provider with
-the spoofed signature and a served code context. The exact hooks an app needs
+Working against microG on the Light Phone III, with the Kyocera KY-42C
+(Android 10, API 29, `armeabi-v7a`) exercised along the way. A working
+prototype: Maps launches and talks to microG's location provider with the
+spoofed signature and a served code context. The exact hooks an app needs
 vary by app and by Google client-library version, so this is a starting point
 more than a finished thing — extend `TARGET_APPS` and the hook set as you find
 what each app asks for.
