@@ -33,7 +33,7 @@ public class SpoofSignature implements IXposedHookLoadPackage {
 
     private static final String TAG = "GmsSpoof";
     private static final String GMS = "com.google.android.gms";
-    private static final String[] TARGET_APPS = { "com.ollix.fogofworld", "com.google.android.apps.maps", "com.google.android.gms" };
+    private static final String[] TARGET_APPS = { "com.ollix.fogofworld", "com.google.android.apps.maps", "com.espn.fantasy.lm.football", "com.google.android.gms" };
     private static final String[] SPOOFED_PACKAGES = { "com.google.android.gms", "com.android.vending", "com.google.android.apps.maps" };
 
     private static final String X509_CERT =

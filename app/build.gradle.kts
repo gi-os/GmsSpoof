@@ -13,8 +13,8 @@ android {
         // what the KY-42C's real API level turns out to be. Raise once known.
         minSdk = 21
         targetSdk = 29
-        versionCode = 1
-        versionName = "0.1"
+        versionCode = 2
+        versionName = "1.1.0"
     }
 
     buildTypes {

@@ -21,7 +21,7 @@ cannot answer honestly:
   `ExceptionInInitializerError`. A working GMS is invisible to that loader.
 
 GmsSpoof fixes both, plus the two small gaps they expose. It is a probe, not
-a product: `minSdk 21`, `versionCode 1`, no icon, no UI — one module, one job.
+a product: `minSdk 21`, no icon, no UI — one module, one job.
 
 ## What it hooks
 
@@ -54,8 +54,14 @@ requested weight from the query string.
 
 ## Target apps
 
-`com.google.android.apps.maps`, `com.google.android.gms`, and
-`com.ollix.fogofworld`. The module only acts inside those three.
+`com.google.android.apps.maps`, `com.google.android.gms`,
+`com.ollix.fogofworld` and `com.espn.fantasy.lm.football`. The module only
+acts inside those four.
+
+ESPN Fantasy needs nothing beyond the signature spoof. Unpatched it does not
+degrade, it stops: Disney's shell turns `ConnectionResult=9` into an error
+screen through `PlayServicesHelper.showPlayServicesErrorDialog` and draws
+nothing else.
 
 ## Build & install
 
@@ -65,6 +71,27 @@ requested weight from the query string.
 
 The APK installs as a normal Xposed module — enable it in LSPosed, target the
 three apps above, reboot. `libs/XposedBridgeAPI-82.jar` is `compileOnly`.
+
+## If a patched app crash-loops before it opens
+
+Two or three crashes on a cold start, then it opens, is not this module and
+not LSPatch. The APK ships `assets/dexopt/baseline.prof`, built against the
+original dex; LSPatch replaces the dex, the checksums stop matching, and
+LSPatch rewrites the profile during bind. That kills the launch with an
+`ExceptionInInitializerError` in `LSPAppComponentFactoryStub`. Clear the
+profiles once and give it one more launch to settle:
+
+```
+adb shell pm art clear-app-profiles <package>
+```
+
+Run it again after any reinstall or update of a patched app. A launch that is
+going to survive logs a `Skip profile` line for every `Processing` line; a
+launch that is going to die does not.
+
+Patch with the LSPatch build that matches the installed manager. The same
+stack trace appears when they differ — read the manager's `versionCode` from
+`dumpsys package org.lsposed.lspatch`.
 
 ## Status
 
