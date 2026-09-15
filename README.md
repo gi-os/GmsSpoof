@@ -1,5 +1,7 @@
 # GmsSpoof
 
+[**⬇ Download the latest APK**](https://github.com/gi-os/GmsSpoof/releases/latest) · free, open source.
+
 An Xposed module that makes Google's apps trust a microG install on a phone
 that has no Google. Built for the Light Phone III; developed against the
 Kyocera DIGNO KY-42C as well.
