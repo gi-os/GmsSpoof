@@ -102,3 +102,9 @@ spoofed signature and a served code context. The exact hooks an app needs
 vary by app and by Google client-library version, so this is a starting point
 more than a finished thing — extend `TARGET_APPS` and the hook set as you find
 what each app asks for.
+
+## Support
+
+These apps are free, open, and built on my own time. Sponsorship pays the bills that don't go away: build servers, test hardware, and the crash reporter that keeps them shipping. Donation or not my code is always free for the world to use.
+
+[Sponsor on GitHub](https://github.com/sponsors/gi-os)
